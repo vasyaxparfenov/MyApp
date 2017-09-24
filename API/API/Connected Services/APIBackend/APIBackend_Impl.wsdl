@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="APIBackend_Impl" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" />
+      <xsd:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API.APIBackend" />
+      <xsd:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="APIBackend_CreateRangeOfHumans_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRangeOfHumans" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_CreateRangeOfHumans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRangeOfHumansResponse" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_CreateRangeOfHumans_DomainFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" name="detail" element="q1:DomainFault" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_CreateHuman_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateHuman" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_CreateHuman_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateHumanResponse" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_CreateHuman_DomainFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" name="detail" element="q2:DomainFault" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumanById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHumanById" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumanById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHumanByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumanById_DomainFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" name="detail" element="q3:DomainFault" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumans_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHumans" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHumansResponse" />
+  </wsdl:message>
+  <wsdl:message name="APIBackend_GetHumans_DomainFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" name="detail" element="q4:DomainFault" />
+  </wsdl:message>
+  <wsdl:portType name="APIBackend">
+    <wsdl:operation name="CreateRangeOfHumans">
+      <wsdl:input wsaw:Action="http://tempuri.org/APIBackend/CreateRangeOfHumans" message="tns:APIBackend_CreateRangeOfHumans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/APIBackend/CreateRangeOfHumansResponse" message="tns:APIBackend_CreateRangeOfHumans_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/APIBackend/CreateRangeOfHumansDomainFaultFault" name="DomainFaultFault" message="tns:APIBackend_CreateRangeOfHumans_DomainFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateHuman">
+      <wsdl:input wsaw:Action="http://tempuri.org/APIBackend/CreateHuman" message="tns:APIBackend_CreateHuman_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/APIBackend/CreateHumanResponse" message="tns:APIBackend_CreateHuman_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/APIBackend/CreateHumanDomainFaultFault" name="DomainFaultFault" message="tns:APIBackend_CreateHuman_DomainFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHumanById">
+      <wsdl:input wsaw:Action="http://tempuri.org/APIBackend/GetHumanById" message="tns:APIBackend_GetHumanById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/APIBackend/GetHumanByIdResponse" message="tns:APIBackend_GetHumanById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/APIBackend/GetHumanByIdDomainFaultFault" name="DomainFaultFault" message="tns:APIBackend_GetHumanById_DomainFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHumans">
+      <wsdl:input wsaw:Action="http://tempuri.org/APIBackend/GetHumans" message="tns:APIBackend_GetHumans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/APIBackend/GetHumansResponse" message="tns:APIBackend_GetHumans_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/APIBackend/GetHumansDomainFaultFault" name="DomainFaultFault" message="tns:APIBackend_GetHumans_DomainFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_APIBackend" type="tns:APIBackend">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateRangeOfHumans">
+      <soap:operation soapAction="http://tempuri.org/APIBackend/CreateRangeOfHumans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainFaultFault">
+        <soap:fault use="literal" name="DomainFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateHuman">
+      <soap:operation soapAction="http://tempuri.org/APIBackend/CreateHuman" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainFaultFault">
+        <soap:fault use="literal" name="DomainFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetHumanById">
+      <soap:operation soapAction="http://tempuri.org/APIBackend/GetHumanById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainFaultFault">
+        <soap:fault use="literal" name="DomainFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetHumans">
+      <soap:operation soapAction="http://tempuri.org/APIBackend/GetHumans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DomainFaultFault">
+        <soap:fault use="literal" name="DomainFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="APIBackend_Impl">
+    <wsdl:port name="BasicHttpBinding_APIBackend" binding="tns:BasicHttpBinding_APIBackend">
+      <soap:address location="http://localhost:3333/bella/APIBackend" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

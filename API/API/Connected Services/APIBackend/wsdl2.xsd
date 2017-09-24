@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3333/bella/APIBackend/wsdl?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="DomainFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="tns:DomainError" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DomainFault" nillable="true" type="tns:DomainFault" />
+  <xs:simpleType name="DomainError">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DomainError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DomainError" nillable="true" type="tns:DomainError" />
+</xs:schema>
