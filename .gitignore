@@ -46,3 +46,5 @@ node_modules
 .vs
 .vscode
 packages
+bin
+obj
