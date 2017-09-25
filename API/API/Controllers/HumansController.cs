@@ -57,8 +57,27 @@ namespace API.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        [AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Options()
         {
+            var resp = new HttpResponseMessage(HttpStatusCode.OK);
+           
+            return resp;
+        }
+
+        public void Post([FromBody]Human humanToSave)
+        {
+            if(humanToSave != null)
+            {
+                var human = new APIBackend.Human
+                {
+                    id = humanToSave.Id,
+                    name = humanToSave.Name,
+                    age = humanToSave.Age
+                };
+                ApiBackend.CreateHuman(human);
+            }
+           
         }
 
         // PUT api/values/5m

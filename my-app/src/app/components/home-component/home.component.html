@@ -1,5 +1,7 @@
-<div class="container well">
-    <div *ngFor="let human of humans" class="col-md-3 col-sm-2 thumbnail">
-        <human-thumbnail [human]="human"></human-thumbnail>
+<div class="container" style="margin-top:20px">
+    <div class="row" >
+        <div *ngFor="let human of humans" class="col-lg-3 col-md-3">
+            <human-thumbnail [human]="human"></human-thumbnail>
+        </div>
     </div>
 </div>

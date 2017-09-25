@@ -1,3 +1,4 @@
+import { CreateHumanComponent } from './components/human-component/create-human.component';
 import { HttpErrorHandlerService } from './services/httpErrorHandler.service';
 import { appRoutes } from './routes';
 import { HomeResolver } from './components/home-component/home.resolver';
@@ -9,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -17,12 +19,15 @@ import { AppComponent } from './app.component';
     AppComponent,
     NavComponent,
     HomeComponent,
-    HumanComponent
+    HumanComponent,
+    CreateHumanComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HumanService,
