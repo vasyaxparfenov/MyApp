@@ -1,62 +1,37 @@
-﻿using System;
+﻿using API.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using API.APIBackend;
-using Human = API.Models.Human;
+using System.ServiceModel;
+using API.APIBackendService;
+using HumanModel = API.Models.HumanModel;
 
 namespace API.Controllers
 {
     public class HumansController : ApiController
     {
-        private static readonly APIBackendClient ApiBackend = new APIBackendClient();
-        private static IEnumerable<Human> GetHumans()
-        {
-            return new []{
-                new Human
-                {
-                    Id = "1",
-                    Name = "Vasya",
-                    Age = 20
-                },
-                new Human
-                {
-                    Id = "2",
-                    Name = "Alex",
-                    Age = 36
-                },
-                new Human
-                {
-                    Id = "3",
-                    Name = "Pavel",
-                    Age = 20
-                } 
+        private readonly APIBackend _apiBackend;
+        private readonly IStringGenerator _stringGeneratorService;
+        private readonly IModelFactory _modelFactory;
 
-            };
+        public HumansController(APIBackend apiBackend, IStringGenerator stringGeneratorService, IModelFactory modelFactory)
+        {
+            _apiBackend = apiBackend;
+            _stringGeneratorService = stringGeneratorService;
+            _modelFactory = modelFactory;
         }
         
+        // GET api/humans
+        public IHttpActionResult Get() => Ok(_apiBackend.GetHumans().Values.Select(human => _modelFactory.Create(human)));
         
-        // GET api/values
-        public IEnumerable<Human> Get()
-        {
-            return ApiBackend.GetHumans().Select(human => new Human {Age = human.Value.age, Id = human.Value.id, Name = human.Value.name});
-        }
 
-        // GET api/values/5
-        public Human Get(string id)
-        {
-            var human = ApiBackend.GetHumanById(id);
-            return new Human
-            {
-                Age = human.age,
-                Id = human.id,
-                Name = human.name
-            };
-        }
+        // GET api/humans/{id}
+        public IHttpActionResult Get(string id) => Ok(_modelFactory.Create(_apiBackend.GetHumanById(id)));
+        
 
-        // POST api/values
+        
         [AcceptVerbs("OPTIONS")]
         public HttpResponseMessage Options()
         {
@@ -65,22 +40,33 @@ namespace API.Controllers
             return resp;
         }
 
-        public void Post([FromBody]Human humanToSave)
+        // POST api/humans
+        public void Post([FromBody]HumanModel humanToSave)
         {
-            if(humanToSave != null)
+            var human = new Human
             {
-                var human = new APIBackend.Human
+                name = humanToSave.Name,
+                age = humanToSave.Age
+            };
+            
+            while (true) {
+                try
                 {
-                    id = humanToSave.Id,
-                    name = humanToSave.Name,
-                    age = humanToSave.Age
-                };
-                ApiBackend.CreateHuman(human);
+                    human.id = _stringGeneratorService.GenerateString(10);
+                    _apiBackend.CreateHuman(human);
+                    break;
+                }
+                catch (FaultException<DomainFault> exception)
+                {
+                    if(exception.Detail.Code != DomainError.IdAlreadyExists)
+                    {
+                        throw;
+                    }
+                }
             }
-           
         }
 
-        // PUT api/values/5m
+        // PUT api/humans/{id}
         public void Put(int id, [FromBody]string value)
         {
         }

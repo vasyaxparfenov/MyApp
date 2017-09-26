@@ -10,13 +10,13 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class HumanService {
     humans: IHuman[];
-    constructor(private http: Http, @Inject('API') private api: string, private httpErrorHandler: HttpErrorHandlerService) { }
+    constructor(private http: Http, @Inject('API') private api: string, private httpErrorHandler: HttpErrorHandlerService) {
+
+     }
     getHumans(): Observable<IHuman[]> {
         return this.http.get(`${this.api}/humans`)
-            .map((response: Response) => {
-                this.humans = response.json() as IHuman[];
-                return this.humans;
-            } )
+            .do(response => this.humans = <IHuman[]>response.json())
+            .map((response: Response) => <IHuman[]>response.json())
             .catch(this.httpErrorHandler.handleError);
     }
     saveHuman(humanToSave: IHuman): Observable<Response> {

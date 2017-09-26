@@ -1,5 +1,5 @@
 export interface IHuman {
-    Id: string;
+    Id?: string;
     Name: string;
     Age: number;
 }

@@ -1,13 +1,16 @@
-<form [formGroup]="humanFormGroup" (ngSubmit)="saveHuman(humanFormGroup.value)" autocomplete="off">
-    <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
-        <label class="form-control-label" for="formGroupExampleInput">Name</label>
-        <em *ngIf="name.invalid && name.dirty">Required</em>
-        <input formControlName="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Input age">
-    </div>
-    <div class="form-group" [ngClass]="{'error': age.invalid && age.dirty}">
-        <label class="form-control-label" for="formGroupExampleInput2">Age</label>
-        <em *ngIf="age.invalid && age.dirty">Required</em>
-        <input formControlName="age" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Input age">
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="humanFormGroup.ivalid">Create</button>
-</form>
+<div class="myForm">
+    <form [formGroup]="humanFormGroup" (ngSubmit)="saveHuman(humanFormGroup.value)" autocomplete="off">
+        <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
+            <label class="form-control-label" for="formGroupExampleInput">Name</label>
+            <em *ngIf="name.invalid && name.dirty">Required</em>
+            <input formControlName="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Input name">
+        </div>
+        <div class="form-group" [ngClass]="{'error': age.invalid && age.dirty}">
+            <label class="form-control-label" for="formGroupExampleInput2">Age</label>
+            <em *ngIf="age.invalid && age.dirty">Required</em>
+            <input formControlName="age" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Input age">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="humanFormGroup.invalid">Create</button>
+    </form>
+
+</div>

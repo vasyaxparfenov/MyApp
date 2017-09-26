@@ -7,20 +7,14 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'create-human',
     templateUrl: './create-human.component.html',
-    styles: [`
-        em { float:right; color:#E05C65; padding-left:10px;}
-        .error input, .error select, .error textarea {background-color:#E3C3C5;}
-        .error ::-webkit-input-placeholder {color: #999}
-        .error ::-moz-placeholder  {color: #999}
-        .error :-moz-placeholder  {color: #999}
-        .error :ms-input-placeholder  {color: #999}
-    `]
+    styleUrls: ['./create-human.component.css']
 })
 
 export class CreateHumanComponent implements OnInit {
     public name: FormControl;
     public age: FormControl;
     public humanFormGroup: FormGroup;
+    public loading = true;
     constructor(private humanService: HumanService, private router: Router) {
 
     }
@@ -35,11 +29,11 @@ export class CreateHumanComponent implements OnInit {
     }
     saveHuman(formValues) {
         const newHuman: IHuman = {
-            Id : this.humanService.humans.length.toString(),
             Name : formValues.name,
             Age :  formValues.age
         };
         this.humanService.saveHuman(newHuman).subscribe(response => {
+            this.loading = true;
             this.router.navigate(['/home']);
         });
     }

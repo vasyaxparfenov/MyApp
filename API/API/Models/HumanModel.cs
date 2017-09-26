@@ -1,6 +1,6 @@
 ﻿namespace API.Models
 {
-    public class Human
+    public class HumanModel
     {
         public string Id { get; set; }
         public string Name { get; set; }

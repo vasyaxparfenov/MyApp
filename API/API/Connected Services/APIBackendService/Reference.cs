@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace API.APIBackend {
+namespace API.APIBackendService {
     using System.Runtime.Serialization;
     using System;
     
@@ -100,7 +100,7 @@ namespace API.APIBackend {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private API.APIBackend.DomainError CodeField;
+        private API.APIBackendService.DomainError CodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
@@ -116,7 +116,7 @@ namespace API.APIBackend {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public API.APIBackend.DomainError Code {
+        public API.APIBackendService.DomainError Code {
             get {
                 return this.CodeField;
             }
@@ -157,48 +157,51 @@ namespace API.APIBackend {
         
         [System.Runtime.Serialization.EnumMemberAttribute(Value="DomainError")]
         DomainErrorMember = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        IdAlreadyExists = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="APIBackend.APIBackend")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="APIBackendService.APIBackend")]
     public interface APIBackend {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/CreateRangeOfHumans", ReplyAction="http://tempuri.org/APIBackend/CreateRangeOfHumansResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackend.DomainFault), Action="http://tempuri.org/APIBackend/CreateRangeOfHumansDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
-        void CreateRangeOfHumans(API.APIBackend.Human[] HumanList);
+        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackendService.DomainFault), Action="http://tempuri.org/APIBackend/CreateRangeOfHumansDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
+        void CreateRangeOfHumans(API.APIBackendService.Human[] HumanList);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/CreateRangeOfHumans", ReplyAction="http://tempuri.org/APIBackend/CreateRangeOfHumansResponse")]
-        System.Threading.Tasks.Task CreateRangeOfHumansAsync(API.APIBackend.Human[] HumanList);
+        System.Threading.Tasks.Task CreateRangeOfHumansAsync(API.APIBackendService.Human[] HumanList);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/CreateHuman", ReplyAction="http://tempuri.org/APIBackend/CreateHumanResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackend.DomainFault), Action="http://tempuri.org/APIBackend/CreateHumanDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
-        void CreateHuman(API.APIBackend.Human Human);
+        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackendService.DomainFault), Action="http://tempuri.org/APIBackend/CreateHumanDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
+        void CreateHuman(API.APIBackendService.Human Human);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/CreateHuman", ReplyAction="http://tempuri.org/APIBackend/CreateHumanResponse")]
-        System.Threading.Tasks.Task CreateHumanAsync(API.APIBackend.Human Human);
+        System.Threading.Tasks.Task CreateHumanAsync(API.APIBackendService.Human Human);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/GetHumanById", ReplyAction="http://tempuri.org/APIBackend/GetHumanByIdResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackend.DomainFault), Action="http://tempuri.org/APIBackend/GetHumanByIdDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
-        API.APIBackend.Human GetHumanById(string id);
+        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackendService.DomainFault), Action="http://tempuri.org/APIBackend/GetHumanByIdDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
+        API.APIBackendService.Human GetHumanById(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/GetHumanById", ReplyAction="http://tempuri.org/APIBackend/GetHumanByIdResponse")]
-        System.Threading.Tasks.Task<API.APIBackend.Human> GetHumanByIdAsync(string id);
+        System.Threading.Tasks.Task<API.APIBackendService.Human> GetHumanByIdAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/GetHumans", ReplyAction="http://tempuri.org/APIBackend/GetHumansResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackend.DomainFault), Action="http://tempuri.org/APIBackend/GetHumansDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
-        System.Collections.Generic.Dictionary<string, API.APIBackend.Human> GetHumans();
+        [System.ServiceModel.FaultContractAttribute(typeof(API.APIBackendService.DomainFault), Action="http://tempuri.org/APIBackend/GetHumansDomainFaultFault", Name="DomainFault", Namespace="http://schemas.datacontract.org/2004/07/DomainBellaNS.API")]
+        System.Collections.Generic.Dictionary<string, API.APIBackendService.Human> GetHumans();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/APIBackend/GetHumans", ReplyAction="http://tempuri.org/APIBackend/GetHumansResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, API.APIBackend.Human>> GetHumansAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, API.APIBackendService.Human>> GetHumansAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface APIBackendChannel : API.APIBackend.APIBackend, System.ServiceModel.IClientChannel {
+    public interface APIBackendChannel : API.APIBackendService.APIBackend, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class APIBackendClient : System.ServiceModel.ClientBase<API.APIBackend.APIBackend>, API.APIBackend.APIBackend {
+    public partial class APIBackendClient : System.ServiceModel.ClientBase<API.APIBackendService.APIBackend>, API.APIBackendService.APIBackend {
         
         public APIBackendClient() {
         }
@@ -219,35 +222,35 @@ namespace API.APIBackend {
                 base(binding, remoteAddress) {
         }
         
-        public void CreateRangeOfHumans(API.APIBackend.Human[] HumanList) {
+        public void CreateRangeOfHumans(API.APIBackendService.Human[] HumanList) {
             base.Channel.CreateRangeOfHumans(HumanList);
         }
         
-        public System.Threading.Tasks.Task CreateRangeOfHumansAsync(API.APIBackend.Human[] HumanList) {
+        public System.Threading.Tasks.Task CreateRangeOfHumansAsync(API.APIBackendService.Human[] HumanList) {
             return base.Channel.CreateRangeOfHumansAsync(HumanList);
         }
         
-        public void CreateHuman(API.APIBackend.Human Human) {
+        public void CreateHuman(API.APIBackendService.Human Human) {
             base.Channel.CreateHuman(Human);
         }
         
-        public System.Threading.Tasks.Task CreateHumanAsync(API.APIBackend.Human Human) {
+        public System.Threading.Tasks.Task CreateHumanAsync(API.APIBackendService.Human Human) {
             return base.Channel.CreateHumanAsync(Human);
         }
         
-        public API.APIBackend.Human GetHumanById(string id) {
+        public API.APIBackendService.Human GetHumanById(string id) {
             return base.Channel.GetHumanById(id);
         }
         
-        public System.Threading.Tasks.Task<API.APIBackend.Human> GetHumanByIdAsync(string id) {
+        public System.Threading.Tasks.Task<API.APIBackendService.Human> GetHumanByIdAsync(string id) {
             return base.Channel.GetHumanByIdAsync(id);
         }
         
-        public System.Collections.Generic.Dictionary<string, API.APIBackend.Human> GetHumans() {
+        public System.Collections.Generic.Dictionary<string, API.APIBackendService.Human> GetHumans() {
             return base.Channel.GetHumans();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, API.APIBackend.Human>> GetHumansAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, API.APIBackendService.Human>> GetHumansAsync() {
             return base.Channel.GetHumansAsync();
         }
     }

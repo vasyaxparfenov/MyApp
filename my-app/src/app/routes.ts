@@ -7,6 +7,6 @@ import { HomeComponent } from './components/home-component/home.component';
 
 export const appRoutes: Routes = [
     {path: 'home', component: HomeComponent, resolve: {humans: HomeResolver}},
-    {path: 'create', component: CreateHumanComponent},
+    {path: 'home/create', component: CreateHumanComponent},
     {path: '', pathMatch: 'full', redirectTo: '/home'}
 ];
